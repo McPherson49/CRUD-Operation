@@ -12,20 +12,18 @@ if(isset($_POST["save_student"])) {
     $cousre = mysqli_real_escape_string($conn ,$_POST["cousre"]);
 
     // INSERTING INTO MY DATABASE
-    $sql = "INSERT INTO user (name, email, phone,	cousre) 
-    VALUES ('$name', '$email', '$phone', '$cousre')";
+    $sql = "INSERT INTO user (name,email,phone,cousre) 
+    VALUES ('$name','$email','$phone','$cousre')";
 
     $query_run = mysqli_query($conn, $sql);
-
-
     if($query_run){
-        $_SESSION["message"] = "Student Created Sucessfully";
+        $_SESSION["message"] = "Student data Sucessfully";
         header("location: student_create.php");
-        exit;
+        exit();
     }else{
         $_SESSION["message"] = "Student Not Created ";
         header("location: student_create.php");
-        exit;
+        exit();
     }
 }
 
